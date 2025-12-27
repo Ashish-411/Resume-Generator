@@ -12,6 +12,14 @@ initialState = {
         contactno:"",
         location:"",
     },
+    professionalinfo:{
+        description:"",
+        workExp:[],
+        skills:[],
+        language:[],
+        academics:"",
+
+    },
 };
 
 //creating a custom hook of context
@@ -38,7 +46,33 @@ export function FormContextProvider({children}){
     const setLocation = (e) =>{
         dispatch({type:"SET_LOCATION",payload:e.target.value});
     }
-        //----------</PERSONAL INTO SECTION
+    //----------</PERSONAL INTO SECTION
+    
+    
+    //----------PROFESSIONAL INFO SECTION
+
+    const setDescription =(e) =>{
+        dispatch({type:"SET_DESCRIPTION",payload:e.target.value});
+
+    }
+    const setAcademics =(e) =>{
+        dispatch({type:"SET_ACADEMICS",payload:e.target.value});
+
+    }
+
+    const addWork = (work) =>{
+        dispatch({type:"ADD_WORK",payload:work});
+    }
+    const addSkill = (skill) =>{
+        dispatch({type:"ADD_SKILL",payload:skill});
+
+    }
+    const addLanguage = (language) =>{
+        dispatch({type:"ADD_LANGUAGE",payload:language});
+
+    }
+    console.log(state.professionalinfo);
+    //----------</PROFESSIONAL INFO SECTION
 
 
 
@@ -50,6 +84,11 @@ export function FormContextProvider({children}){
         setContactNo,
         setEmail,
         setLocation,
+        setDescription,
+        addWork,
+        addSkill,
+        addLanguage,
+        setAcademics,
         }}>
             {children}
         </FormContext.Provider>

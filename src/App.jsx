@@ -1,9 +1,9 @@
-import PersonalInfo from "./components/PersonalInfo";
+import FormContainer from "./FormContainer";
 import { FormContextProvider } from "./context/FormContext";
 function App() {
   return (
     <FormContextProvider>
-      <PersonalInfo/>
+      <FormContainer/>
     </FormContextProvider>
   )
 }

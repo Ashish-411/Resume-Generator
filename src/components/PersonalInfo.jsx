@@ -1,8 +1,12 @@
 import { useFormContext } from "../context/FormContext";
-function PersonalInfo(){
+function PersonalInfo({onNext}){
     const {personalinfo,setFirstName,setLastName,setContactNo,setEmail,setLocation} = useFormContext();
+    function handleSubmit(e){
+        e.preventDefault();
+        onNext();
+    }
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="first_name">First Name:</label>
                 <input 

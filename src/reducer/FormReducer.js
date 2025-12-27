@@ -41,6 +41,47 @@ function FormReducer(state,action){
                     location: action.payload,
                 }
             }
+        case "SET_DESCRIPTION":
+            return{
+                ...state,
+                professionalinfo:{
+                    ...state.professionalinfo,
+                    description: action.payload,
+                }
+            }
+        case "SET_ACADEMICS":
+            return{
+                ...state,
+                professionalinfo:{
+                    ...state.professionalinfo,
+                    academics: action.payload,
+                }
+            }
+
+        case "ADD_WORK":
+            return{
+                ...state,
+                professionalinfo:{
+                    ...state.professionalinfo,
+                    workExp:[...state.professionalinfo.workExp,action.payload],
+                }
+            }
+        case "ADD_SKILL":
+            return{
+                ...state,
+                professionalinfo:{
+                    ...state.professionalinfo,
+                    skills:[...state.professionalinfo.skills,action.payload],
+                }
+            }
+        case "ADD_LANGUAGE":
+            return{
+                ...state,
+                professionalinfo:{
+                    ...state.professionalinfo,
+                    language:[...state.professionalinfo.language,action.payload],
+                }
+            }
             
             default:
                 return state;
