@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useFormContext } from "../context/FormContext";
-function ProdessionalInfo({onNext,onPrevious}){
+import "../styles/ProfessionalInfo.css";
+import { NavLink } from "react-router-dom";
+function ProdessionalInfo({onPrevious}){
     //useState
     const [work,setWork] = useState("");
     const [skill,setSkill] = useState("");
@@ -28,21 +30,20 @@ function ProdessionalInfo({onNext,onPrevious}){
     function handleSubmit(e){
         e.preventDefault();
         const action = e.nativeEvent.submitter.value;
-        if(action === "next" ) onNext();
-        else if(action === "previous") onPrevious();
+        if(action === "previous") onPrevious();
     }
     return(
-        <form onSubmit={handleSubmit}>
-           <div className="conatiner">
-                <div className="description-section">
-                    <label htmlFor="description">Profile Info:</label>
+        <form className="form-container" onSubmit={handleSubmit}>
+            <h2>Professional Information</h2>
+                <div className="form-section">
+                    <label htmlFor="description">Profile Summary:</label>
                     <textarea 
                         name="description" 
                         id="description"
                         onChange={setDescription}>                      
                     </textarea>
                 </div>
-                <div className="work-experience-section">
+                <div className="form-section">
                     <label htmlFor="work">Work Experience:</label>
                     <textarea 
                         name="work" 
@@ -50,20 +51,20 @@ function ProdessionalInfo({onNext,onPrevious}){
                         value={work}
                         onChange={(e) => setWork(e.target.value)}
                     ></textarea>
-                    <button type="button" onClick={handleWork}>Add More</button>
+                    <button type="button" className="add-btn" onClick={handleWork}>Add More</button>
                 </div>
-                <div className="skill-section">
-                    <label htmlFor="skill">Skills:</label>
+                <div className="form-section">
+                    <label htmlFor="skill">Skills:(Write in one Word)</label>
                     <textarea 
                         name="skill" 
                         id="skill"
                         value={skill}
                         onChange={(e) => setSkill(e.target.value)}
                         ></textarea>
-                    <button type="button" onClick={handleSkill}>Add More</button>
+                    <button type="button"className="add-btn" onClick={handleSkill}>Add More</button>
 
                 </div>
-                <div className="language-section">
+                <div className="form-section">
                     <label htmlFor="language">Languages:</label>
                     <textarea 
                         name="language" 
@@ -71,10 +72,10 @@ function ProdessionalInfo({onNext,onPrevious}){
                         value={language}
                         onChange={(e) => setLanguage(e.target.value)}
                         ></textarea>
-                    <button type="button" onClick={handleLanguage}>Add More</button>
+                    <button type="button" className="add-btn" onClick={handleLanguage}>Add More</button>
 
                 </div>
-                <div className="education-section">
+                <div className="form-section">
                     <label htmlFor="education">Academics:</label>
                     <textarea 
                         name="education" 
@@ -82,9 +83,12 @@ function ProdessionalInfo({onNext,onPrevious}){
                         onChange={setAcademics}>                      
                     </textarea>
                 </div>
-           </div>
-           <button type="submit" name="action" value = "previous"> Previous</button>
-           <button type="submit" name="action" value = "next"> Next</button>
+           <div className="form-actions">
+                <button type="submit" name="action" value = "previous"> Previous</button>
+                <NavLink to ="/resume">
+                    <button name="action" value = "next"> Next</button>
+                </NavLink>
+            </div>
         </form>
     );
 }

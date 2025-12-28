@@ -1,6 +1,8 @@
 import PersonalInfo from "./components/PersonalInfo";
 import ProdessionalInfo from "./components/ProfessionalInfo";
 import { useState } from "react";
+import {Routes,Route} from "react-router-dom"
+import Resume from "./components/Resume";
 
 function FormContainer(){
     const [step,setStep] = useState(1)
@@ -8,9 +10,25 @@ function FormContainer(){
     const prevStep = () => setStep((prev) => prev-1);
 ;    return(
         <>
-            { step === 1 && <PersonalInfo  onNext = {nextStep}/>}
-            {step === 2 && <ProdessionalInfo onNext ={nextStep} onPrevious = {prevStep}/>}
-            {/* <ProdessionalInfo/> */}
+            <Routes>
+                {/* FORM PAGE */}
+                <Route
+                    path="/"
+                    element={
+                    step === 1 ? (
+                        <PersonalInfo onNext={nextStep} />
+                    ) : (
+                        <ProdessionalInfo
+                        onNext={nextStep}
+                        onPrevious={prevStep}
+                        />
+                    )
+                    }
+                />
+
+                {/* RESUME PAGE */}
+                <Route path="/resume" element={<Resume />} />
+            </Routes>
         </>
     );
 }
