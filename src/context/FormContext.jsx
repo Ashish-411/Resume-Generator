@@ -71,7 +71,6 @@ export function FormContextProvider({children}){
         dispatch({type:"ADD_LANGUAGE",payload:language});
 
     }
-    console.log(state.professionalinfo);
     //----------</PROFESSIONAL INFO SECTION
 
 

@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.PersonalInfo{
+    width: 30%;
+    height: 100%;
+    background-color: rgb(29, 33, 56);
+    color: whitesmoke;
+}
+.ProfessionalInfo{
+    width: 70%;
+    height: 100%;
+    background-color: whitesmoke;
+}
+/* Font choice (doesn't change your layout/colors) */
+.name-section,
+.contact-section,
+.skills-section,
+.language-section,
+.description-section,
+.work-experience-section,
+.education-section {
+  font-family: "Segoe UI", "Inter", Arial, sans-serif;
+}
+
+/* LEFT SIDE */
+.name-section {
+  padding: 30px 20px 15px 20px;
+}
+
+.name-section h2 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.contact-section,
+.skills-section,
+.language-section {
+  padding: 15px 20px;
+}
+.contact-section h2,
+.skills-section h2,
+.language-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.contact-section svg {
+  font-size: 16px;
+  min-width: 16px;
+  height: 16px;
+}
+/* Hollow (unfilled) bullets */
+.skills-section ul,
+.language-section ul {
+  margin-top: 8px;
+  padding-left: 20px;
+  list-style-type: circle;
+}
+
+.skills-section li,
+.language-section li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+/* RIGHT SIDE */
+.description-section,
+.work-experience-section,
+.education-section {
+  padding: 30px 40px 0 40px;
+}
+
+.description-section h2,
+.work-experience-section h2,
+.education-section h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.description-section p,
+.education-section p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Hollow bullets for work experience too */
+.work-experience-section ul {
+  margin-top: 8px;
+  padding-left: 22px;
+  list-style-type: circle;
+}
+
+.work-experience-section li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+}
