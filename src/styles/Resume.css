@@ -4,18 +4,44 @@
     box-sizing: border-box;
 }
 .container{
-    width: 100vw;
-    height: 100vh;
+    width: 210mm;
+    height: 297mm;
     display: flex;
+    margin: auto;          /* center on screen */
+    background: white;
+}
+/* PROFILE PICTURE SECTION */
+.picture-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.picture-section figure {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  background-color: #ddd;
+}
+
+.picture-section img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;   /* important for proper crop */
+  display: block;
 }
 .PersonalInfo{
-    width: 30%;
+    width: 35%;
     height: 100%;
     background-color: rgb(29, 33, 56);
     color: whitesmoke;
 }
 .ProfessionalInfo{
-    width: 70%;
+    width: 65%;
     height: 100%;
     background-color: whitesmoke;
 }
@@ -43,12 +69,14 @@
 
 .contact-section,
 .skills-section,
-.language-section {
+.language-section,
+.hobby-section {
   padding: 15px 20px;
 }
 .contact-section h2,
 .skills-section h2,
-.language-section h2 {
+.language-section h2,
+.hobby-section h2 {
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -67,14 +95,16 @@
 }
 /* Hollow (unfilled) bullets */
 .skills-section ul,
-.language-section ul {
+.language-section ul,
+ .hobby-section ul{
   margin-top: 8px;
   padding-left: 20px;
   list-style-type: circle;
 }
 
 .skills-section li,
-.language-section li {
+.language-section li,
+.hobby-section li {
   margin-bottom: 6px;
   font-size: 14px;
 }

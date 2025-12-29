@@ -1,7 +1,18 @@
+import { useState } from "react";
 import { useFormContext } from "../context/FormContext";
 import "../styles/PersonalInfo.css";
 function PersonalInfo({onNext}){
-    const {personalinfo,setFirstName,setLastName,setContactNo,setEmail,setLocation} = useFormContext();
+    const [hobby,setHobby] = useState("");
+    const {personalinfo,setFirstName,
+            setLastName,setContactNo,setEmail,
+            setLocation,addHobby,setProfession,setPhoto} = useFormContext();
+    function handleHobby(){
+    if (hobby.trim() === "") return;
+    addHobby(hobby);
+    setHobby("");
+   }
+
+
     function handleSubmit(e){
         e.preventDefault();
         onNext();
@@ -9,6 +20,13 @@ function PersonalInfo({onNext}){
     return(
         <form onSubmit={handleSubmit} className="form-container">
             <h2>Personal Information</h2>
+            <div className="photo-section">
+                <p>UPLOAD PHOTO:</p>
+                <input type="file"
+                accept="image/*"
+                onChange={setPhoto}
+                />
+            </div>
             <div className="form-group">
                 <label htmlFor="first_name">First Name:</label>
                 <input 
@@ -26,6 +44,14 @@ function PersonalInfo({onNext}){
                     name="last_name"
                     value={personalinfo.last_name}
                     onChange={setLastName}
+                />
+                <label htmlFor="profession">Profession:</label>
+                <input 
+                    type="text" 
+                    id="profession"
+                    name="profession"
+                    value={personalinfo.profession}
+                    onChange={setProfession}
                 />
             </div>
             <div className="form-group">     
@@ -52,6 +78,16 @@ function PersonalInfo({onNext}){
                     id="location"
                     value={personalinfo.location}
                     onChange={setLocation} />
+            </div>
+            <div className="form-group">
+                    <label htmlFor="hobby">Hobby:(Write in one Word)</label>
+                    <input 
+                        name="hobby" 
+                        id="hobby"
+                        value={hobby}
+                        onChange={(e) => setHobby(e.target.value)}
+                        ></input>
+                    <button type="button"className="add-btn" onClick={handleHobby}>Add More</button>
             </div>
             <div className="form-actions">
                 <button type="submit">Next</button>

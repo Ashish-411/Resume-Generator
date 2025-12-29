@@ -16,7 +16,7 @@ function FormContainer(){
                 <Route
                     path="/"
                     element={
-                    step === 1 ? (
+                        step === 1 ? (
                         <PersonalInfo onNext={nextStep} />
                     ) : (
                         <ProdessionalInfo

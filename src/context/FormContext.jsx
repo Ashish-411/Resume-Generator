@@ -6,11 +6,14 @@ const FormContext = createContext();
 let initialState;
 initialState = {
    personalinfo:{
+        image : null,
         first_name:"",
         last_name:"",
+        profession:"",
         email:"",
         contactno:"",
         location:"",
+        hobby:[],
     },
     professionalinfo:{
         description:"",
@@ -37,6 +40,9 @@ export function FormContextProvider({children}){
     const setLastName = (e) =>{
         dispatch({type:"SET_LAST_NAME",payload:e.target.value});
     }
+    const setProfession = (e) =>{
+        dispatch({type:"SET_PROFESSION",payload:e.target.value});
+    }
     const setContactNo = (e) =>{
         dispatch({type:"SET_CONTACT_NO",payload:e.target.value});
     }
@@ -46,6 +52,19 @@ export function FormContextProvider({children}){
     const setLocation = (e) =>{
         dispatch({type:"SET_LOCATION",payload:e.target.value});
     }
+    const addHobby = (hobby) =>{
+        dispatch({type:"ADD_HOBBY",payload:hobby});
+
+    }
+    const setPhoto = (e) =>{
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        const imageURL = URL.createObjectURL(file);
+        dispatch({type:"SET_PHOTO",payload:imageURL});
+        }
+
+    console.log(state.personalinfo.image);
     //----------</PERSONAL INTO SECTION
     
     
@@ -80,15 +99,19 @@ export function FormContextProvider({children}){
         ...state,
         setFirstName,
         setLastName,
+        setProfession,
         setContactNo,
         setEmail,
         setLocation,
+        addHobby,
         setDescription,
         addWork,
         addSkill,
         addLanguage,
         setAcademics,
+        setPhoto,
         }}>
             {children}
         </FormContext.Provider>
+
 }

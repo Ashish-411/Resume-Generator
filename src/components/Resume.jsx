@@ -11,8 +11,14 @@ function Resume(){
     return(
         <div className="container">
             <div className="PersonalInfo">
-                <div class="name-section">
+                <div className="picture-section">
+                    <figure>
+                        <img src={personalinfo.image} alt="Profile Picture" />
+                    </figure>
+                </div>
+                <div className="name-section">
                     <h2>{personalinfo.first_name +" "+ personalinfo.last_name}</h2>
+                    <h3>{personalinfo.profession}</h3>
                 </div>
                 <div className="contact-section">
                     <h2>CONTACT</h2>
@@ -35,6 +41,16 @@ function Resume(){
                     <ul>
                         {
                             professionalinfo.language.map((elem,index)=>{
+                                return(<li key={index}>{elem}</li>);
+                            })
+                        }
+                    </ul>
+                </div>
+                <div className="hobby-section">
+                    <h2>HOBBY</h2>
+                    <ul>
+                        {
+                            personalinfo.hobby.map((elem,index)=>{
                                 return(<li key={index}>{elem}</li>);
                             })
                         }

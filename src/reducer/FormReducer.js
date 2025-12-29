@@ -1,5 +1,13 @@
 function FormReducer(state,action){
     switch(action.type){
+        case "SET_PHOTO":
+            return{
+                ...state,
+                personalinfo:{
+                    ...state.personalinfo,
+                    image: action.payload,
+                }
+            }
         case "SET_FIRST_NAME":
             return{
                 ...state,
@@ -14,6 +22,15 @@ function FormReducer(state,action){
                 personalinfo:{
                     ...state.personalinfo,
                     last_name: action.payload,
+                }
+
+            }
+        case "SET_PROFESSION":
+            return{
+                ...state,
+                personalinfo:{
+                    ...state.personalinfo,
+                    profession: action.payload,
                 }
 
             }
@@ -39,6 +56,14 @@ function FormReducer(state,action){
                 personalinfo:{
                     ...state.personalinfo,
                     location: action.payload,
+                }
+            }
+        case "ADD_HOBBY":
+            return{
+                ...state,
+                personalinfo:{
+                    ...state.personalinfo,
+                    hobby:[...state.personalinfo.hobby,action.payload],
                 }
             }
         case "SET_DESCRIPTION":
