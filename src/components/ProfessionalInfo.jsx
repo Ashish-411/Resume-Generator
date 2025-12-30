@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFormContext } from "../context/FormContext";
 import "../styles/ProfessionalInfo.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 function ProdessionalInfo({onPrevious}){
     //useState
     const [work,setWork] = useState("");
@@ -9,6 +9,7 @@ function ProdessionalInfo({onPrevious}){
     const [language,setLanguage] = useState("");
     //UseContext
      const {addWork,addSkill,addLanguage,setDescription,setAcademics} = useFormContext();
+     const navigate = useNavigate();
 
      
    function handleWork(){
@@ -26,11 +27,14 @@ function ProdessionalInfo({onPrevious}){
         addLanguage(language);
         setLanguage("");
    }
+   function handlePrevious(e){
+        e.preventDefault();
+        onPrevious();
+   }
     //Handle submit
     function handleSubmit(e){
         e.preventDefault();
-        const action = e.nativeEvent.submitter.value;
-        if(action === "previous") onPrevious();
+        navigate("/resume");
     }
     return(
         <form className="form-container" onSubmit={handleSubmit}>
@@ -40,7 +44,9 @@ function ProdessionalInfo({onPrevious}){
                     <textarea 
                         name="description" 
                         id="description"
-                        onChange={setDescription}>                      
+                        onChange={setDescription}
+                        required
+                        >
                     </textarea>
                 </div>
                 <div className="form-section">
@@ -50,6 +56,7 @@ function ProdessionalInfo({onPrevious}){
                         id="work"
                         value={work}
                         onChange={(e) => setWork(e.target.value)}
+                        
                     ></textarea>
                     <button type="button" className="add-btn" onClick={handleWork}>Add More</button>
                 </div>
@@ -60,6 +67,7 @@ function ProdessionalInfo({onPrevious}){
                         id="skill"
                         value={skill}
                         onChange={(e) => setSkill(e.target.value)}
+                        
                         ></textarea>
                     <button type="button"className="add-btn" onClick={handleSkill}>Add More</button>
 
@@ -71,6 +79,7 @@ function ProdessionalInfo({onPrevious}){
                         id="language"
                         value={language}
                         onChange={(e) => setLanguage(e.target.value)}
+                        
                         ></textarea>
                     <button type="button" className="add-btn" onClick={handleLanguage}>Add More</button>
 
@@ -80,14 +89,16 @@ function ProdessionalInfo({onPrevious}){
                     <textarea 
                         name="education" 
                         id="education"
-                        onChange={setAcademics}>                      
+                        onChange={setAcademics}
+                        required
+                        >                      
                     </textarea>
                 </div>
            <div className="form-actions">
-                <button type="submit" name="action" value = "previous"> Previous</button>
-                <NavLink to ="/resume">
-                    <button name="action" value = "next"> Next</button>
-                </NavLink>
+                <button type="button" name="action" value = "previous" onClick={handlePrevious}> Previous</button>
+                <button type="submit" name = "action" value = "next"> Next</button>
+                {/* <NavLink to ="/resume">
+                </NavLink> */}
             </div>
         </form>
     );

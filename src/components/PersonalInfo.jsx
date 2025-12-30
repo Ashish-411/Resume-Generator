@@ -25,6 +25,7 @@ function PersonalInfo({onNext}){
                 <input type="file"
                 accept="image/*"
                 onChange={setPhoto}
+                required
                 />
             </div>
             <div className="form-group">
@@ -34,7 +35,9 @@ function PersonalInfo({onNext}){
                     id="first_name"
                     name="first_name"
                     value={personalinfo.first_name}
-                    onChange={setFirstName}/>
+                    onChange={setFirstName}
+                    required
+                    />
             </div>
             <div className="form-group">
                 <label htmlFor="last_name">Last Name:</label>
@@ -44,6 +47,7 @@ function PersonalInfo({onNext}){
                     name="last_name"
                     value={personalinfo.last_name}
                     onChange={setLastName}
+                    required
                 />
                 <label htmlFor="profession">Profession:</label>
                 <input 
@@ -52,6 +56,7 @@ function PersonalInfo({onNext}){
                     name="profession"
                     value={personalinfo.profession}
                     onChange={setProfession}
+                    required
                 />
             </div>
             <div className="form-group">     
@@ -61,7 +66,9 @@ function PersonalInfo({onNext}){
                     id="phone" 
                     pattern="[0-9]{10}"
                     value={personalinfo.contactno}
-                    onChange={setContactNo}/>
+                    onChange={setContactNo}
+                    required
+                    />
             </div>
             <div className="form-group">                
                 <label htmlFor="email">Email:</label>
@@ -69,7 +76,9 @@ function PersonalInfo({onNext}){
                     type="email" 
                     id="email"
                     value={personalinfo.email}
-                    onChange={setEmail} />
+                    onChange={setEmail} 
+                    required
+                    />
             </div>
          <div className="form-group">
                 <label htmlFor="location">Current Location:</label>
@@ -77,7 +86,9 @@ function PersonalInfo({onNext}){
                     type="text" 
                     id="location"
                     value={personalinfo.location}
-                    onChange={setLocation} />
+                    onChange={setLocation} 
+                    required
+                    />
             </div>
             <div className="form-group">
                     <label htmlFor="hobby">Hobby:(Write in one Word)</label>

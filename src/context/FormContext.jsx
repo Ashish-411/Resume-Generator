@@ -63,8 +63,6 @@ export function FormContextProvider({children}){
         const imageURL = URL.createObjectURL(file);
         dispatch({type:"SET_PHOTO",payload:imageURL});
         }
-
-    console.log(state.personalinfo.image);
     //----------</PERSONAL INTO SECTION
     
     
